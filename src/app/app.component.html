@@ -1,0 +1,122 @@
+<div>
+  <div class="card">
+    <p-menubar [model]="items">
+      <ng-template pTemplate="start">
+        <div style="font-size: x-large; margin-left: 60px">
+          <span><strong> ample</strong></span
+          ><span>Logic</span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="item" let-item let-root="root">
+        <a pRipple class="flex align-items-center p-menuitem-link">
+          <span
+            style="
+              background-color: rgba(0, 132, 255, 0.741);
+              padding: 6px;
+              border-radius: 3px;
+              color: white;
+            "
+            [class]="item.icon"
+          ></span>
+          <span style="margin-left: 6px; margin-right: 6px">{{
+            item.label
+          }}</span>
+          <i
+            *ngIf="item.items"
+            [ngClass]="[
+              'pi',
+              root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto'
+            ]"
+          ></i>
+        </a>
+      </ng-template>
+      <ng-template pTemplate="end">
+        <div class="flex align-items-center">
+          <img
+            src="../assets//usa-flag-round-circle-icon.png"
+            alt=""
+            height="29px"
+            style="margin-right: 20px"
+          />
+          <i
+            class="pi pi-bell"
+            style="font-size: 1.9rem; margin-right: 20px"
+          ></i>
+          <p-avatar
+            image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+            shape="circle"
+          />
+        </div>
+      </ng-template>
+    </p-menubar>
+  </div>
+
+  <div class="imp">
+    <p-button label="Start" (onClick)="showBottomRight()"></p-button>
+  </div>
+</div>
+
+<footer>
+  <div style="float: right" *ngIf="isConstentShow" (click)="hideContent()">
+    <i
+      class="pi pi-angle-down"
+      style="
+        background-color: rgba(0, 132, 255, 0.741);
+        padding: 4px 15px;
+        border-radius: 3px;
+        color: white;
+      "
+    ></i>
+  </div>
+  <div style="float: right" *ngIf="!isConstentShow" (click)="showContent()">
+    <i
+      class="pi pi-angle-up"
+      style="
+        background-color: rgba(0, 132, 255, 0.741);
+        padding: 4px 15px;
+        border-radius: 3px;
+        color: white;
+      "
+    ></i>
+  </div>
+ 
+  <div class="migrated-data" *ngIf="isConstentShow">
+    <div class="hide">
+      <div class="content">
+        <div style="flex: 1 1 10%">
+          <i
+            class="pi pi-truck"
+            style="
+              background-color: rgba(0, 132, 255, 0.741);
+              padding: 14px 25px;
+              border-radius: 3px;
+              font-size: 1.9rem;
+              color: white;
+            "
+          ></i>
+        </div>
+        <div style="flex: 1 1 90%">
+          <p style="margin: 8px 0">Migrating data to selected environment</p>
+          <p-toast />
+          <p-progressBar [value]="value" [style]="{ height: '16px' }" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main" *ngIf="!isConstentShow">
+    <div class="left">
+      <div>
+        <span><strong> ample</strong></span
+        ><span>Logic</span>
+      </div>
+    </div>
+    <div class="center">
+      Copyrights &#169; 2010-2023 Amplelogic | All rights reserved
+    </div>
+    <div class="right">v3.1.0</div>
+  </div>
+</footer>
+
+<div class="card flex justify-content-center gap-2">
+  <p-toast position="bottom-right" key="br" />
+</div>
